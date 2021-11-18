@@ -13,20 +13,24 @@ from numbers_to_dec import list_to_decimal
 def test_list_to_decimal(nums, expected):
     assert list_to_decimal(nums) == expected
 
-
-def test_bool_input():
-    with pytest.raises(TypeError):
-        list_to_decimal([1, 2 , True])
-
-def test_float_input():
-    with pytest.raises(TypeError):
-        list_to_decimal([2.5, 4, 3, 6])
-
-def test_string_input():
-    with pytest.raises(TypeError):
-        list_to_decimal([2, 2, '2'])
-
-def test_negative():
+@pytest.mark.parametrize("nums", [
+    ([1, 2, -5]),
+    ([-1, 2, 5]),
+    ([11, 2, 5]),
+    ([10, 5, 2]),
+])
+def test_value_errors(nums):
     with pytest.raises(ValueError):
-        list_to_decimal([-2, 4, 6, 7])
+        list_to_decimal(nums)
 
+@pytest.mark.parametrize("nums", [
+    ([1.5, 4, 6]),
+    ([5, 5.2, 7]),
+    ([1, 3, True]),
+    (['1', 4, 6]),
+    ([6, 1, False]),
+    (["4", 5, 4])
+])
+def test_type_errors(nums):
+    with pytest.raises(TypeError):
+        list_to_decimal(nums)
