@@ -1,4 +1,4 @@
-## [Bite 1. Sum n numbers](https://codechalleng.es/bites/1/)
+## [Bite 317. Pickling objects](https://codechalleng.es/bites/317/)
 
 Good luck and please share you code in the Bite forums upon completion.
 
